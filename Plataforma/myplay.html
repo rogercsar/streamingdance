@@ -1,0 +1,183 @@
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Playlist</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<!--<link rel="stylesheet" type="text/css" href="css/ballet.css">-->
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+
+						<!-- Header -->
+					<header id="header">
+						<h1><a href="index.html">Minhas Playlists</a></h1>
+						<nav>
+							<a href="#menu">Menu</a>
+						</nav>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<div class="inner">
+							<h2>Menu</h2>
+							<ul class="links">
+								<li><a href="ballet.html">Ballet</a></li>
+								<li><a href="jazz.html">Jazz</a></li>
+								<li><a href="hiphop.html">Hip-Hop</a></li>
+								<li><a href="contemporaneo.html">Contemporâneo</a></li>
+								<li><a href="salao.html">Salão</a></li>
+								<li><a href="perfil.html">Perfil</a></li>
+
+
+							</ul>
+							<a href="#" class="close">Close</a>
+						</div>
+					</nav>
+				
+				
+						<!-- Banner -->
+							<section id="banner">
+								<div class="inner">
+									<div class="logo"><span class=""><i style="font-size:24px" class="fa">&#xf1ae;</i></span></div>
+									<h2>Minhas Playlists</h2>
+									<h3>- Minhas listas de músicas salvas </h3>
+								</div>
+
+							</section>
+
+						
+							<div id="conteudo">
+					
+							
+								<div id="conteudo-left">
+									<section id="musicas">		
+										<br>
+
+										<audio id="audio">
+										    Seu navegador não possui suporte ao elemento audio
+										</audio>
+										<progress id="barra_progresso" max="0" value="0"></progress>
+										<div>
+										    <a href="#" onclick="play()">Play</a>
+										    <a href="#" onclick="pause()">Pause</a>
+										    <a href="#" onclick="stop()">Stop</a>
+										</div>
+										<div id="nome_musica"></div>
+										<span id="tempo_atual">00:00:00</span> /
+										<span id="tempo_total">00:00:00</span>
+										 
+										<script>
+										    var i = 0;
+										    var musicas =   [
+										            { mp3:'the_godfather_main_title.mp3' , ogg:'the_godfather_main_title.ogg' , titulo:'The Godfather Main Title Sample'},
+										            { mp3:'game_of_thornes_main_title.mp3', mp3:'game_of_thornes_main_title.ogg' , titulo:'Game of Thrones Main Title Sample'},
+										            { mp3:'battlestargalatica_main_tite.mp3' ,mp3:'battlestargalatica_main_tite.ogg' , titulo:'Battlestar Galactica Main Title Sample'},
+										            ]; 
+										    audio = document.getElementById('audio');
+										             
+										    audio.addEventListener('canplay', play_evento , false);
+										    audio.addEventListener('timeupdate', atualizar , false);
+										    audio.addEventListener('ended', proxima , false);
+										 
+										    function play(){
+										        proxima();
+										    }
+										 
+										    function pause(){
+										        audio.pause();
+										    }
+										 
+										    function stop(){
+										        audio.pause();
+										        audio.currentTime = 0;
+										    }
+										 
+										    function play_evento(){
+										        document.getElementById('tempo_atual').innerHTML = secToStr( audio.currentTime) ;
+										        document.getElementById('tempo_total').innerHTML = secToStr( audio.duration );
+										        document.getElementById('barra_progresso').max = audio.duration;
+										        document.getElementById('barra_progresso').value = audio.currentTime;
+										    }
+										 
+										    function atualizar(){
+										        document.getElementById('tempo_atual').innerHTML = secToStr( audio.currentTime);
+										        document.getElementById('barra_progresso').value = audio.currentTime;
+										    }
+										 
+										    function proxima(){
+										        if(audio.canPlayType("audio/mp3") != ''){
+										            audio.src = musicas[i].mp3;
+										        }else{
+										            audio.src = musicas[i].ogg;
+										        }
+										        document.getElementById('nome_musica').innerHTML = musicas[i].titulo;
+										        audio.play();
+										 
+										        i++;
+										        if( i >= musicas.length ) i = 0;
+										    }
+										 
+										    function secToStr( sec_num ) {
+										        sec_num = Math.floor( sec_num );
+										        var horas   = Math.floor(sec_num / 3600);
+										        var minutos = Math.floor((sec_num - (horas * 3600)) / 60);
+										        var segundos = sec_num - (horas * 3600) - (minutos * 60);
+										 
+										        if (horas   < 10) {horas   = "0"+horas;}
+										        if (minutos < 10) {minutos = "0"+minutos;}
+										        if (segundos < 10) {segundos = "0"+segundos;}
+										        var tempo    = horas+':'+minutos+':'+segundos;
+										        return tempo;
+										    }
+										</script>
+
+
+									</section>									
+								</div>	
+							</div>
+
+								<div id="conteudo-right">
+
+								</div>
+
+
+
+								
+		
+			</div>
+
+			<!-- Footer -->
+					<section id="footer">
+						<div class="inner">
+							
+							
+							<ul class="copyright">
+								<li>&copy; Streaming Dance. Todos direitos Reservados.</li>
+							</ul>
+						</div>
+					</section>
+	
+			
+
+		<!-- Scripts -->
+			<script src="js/login.js"></script>
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
+

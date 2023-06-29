@@ -1,0 +1,29 @@
+body {
+	background-color: #FFE4C4;
+}
+
+#titulo h1 {
+	margin-top: 160px;
+	margin-left: 630px;
+	font-family: Arial;
+}
+
+#manager {
+	margin-left: 600px;
+}
+
+#manager input {
+	height: 20px;
+}
+
+#manager button {
+	height: 30px;
+	width: 180px;
+}
+
+#rodape p {
+	margin-left: 600px;
+	margin-top: 234px;
+	font-size: 12px;
+	font-family: Arial;
+}
